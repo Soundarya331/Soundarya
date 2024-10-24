@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application Portal</title>
+    <link rel="stylesheet" href="candidateform.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>DataSturdy Job Application Form</h1>
+
+      <!-- Display the job title here -->
+      <div id="job-title" class="job-title"></div>
+
+      <form id="application-form">
+        <h2>Job Details</h2>
+        <p><strong>Job Title:</strong> <span id="display-job-title"></span></p>
+        <p>
+          <strong>Job Requirements:</strong>
+          <span id="display-job-requirements"></span>
+        </p>
+        <p>
+          <strong>Job Description:</strong>
+          <span id="display-job-description"></span>
+        </p>
+
+        <!-- Form fields -->
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="currentSalary">Current Salary:</label>
+        <input type="number" id="currentSalary" name="currentSalary" required />
+        <label for="experience">Experience (years):</label>
+        <input type="number" id="experience" name="experience" required />
+        <label for="noticePeriod">Notice Period (months):</label>
+        <input type="number" id="noticePeriod" name="noticePeriod" required />
+
+        <label for="currentCompany">Current Company Name:</label>
+        <input type="text" id="currentCompany" name="currentCompany" required />
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="resume">Upload Resume:</label>
+        <input type="file" id="resume" name="resume" required />
+
+        <button type="submit">Submit Application</button>
+      </form>
+
+      <div id="response-message"></div>
+    </div>
+  </body>
+</html>

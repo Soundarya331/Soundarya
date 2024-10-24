@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Jobs</title>
+    <link rel="stylesheet" href="home2.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Filters</h3>
+      <div class="filter-section">
+        <h4>Location Filter</h4>
+        <select id="location-filter">
+          <option value="all">All Locations</option>
+          <option value="bengaluru">Bengaluru</option>
+          <option value="delhi">Delhi</option>
+          <option value="chennai">Chennai</option>
+          <option value="hyderabad">Hyderabad</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="pune">Pune</option>
+          <option value="kolkata">Kolkata</option>
+          <option value="ahmedabad">Ahmedabad</option>
+          <option value="amritsar">Amritsar</option>
+          <option value="bhopal">Bhopal</option>
+          <option value="bhubaneswar">Bhubaneswar</option>
+          <option value="chandigarh">Chandigarh</option>
+          <option value="faridabad">Faridabad</option>
+          <option value="ghaziabad">Ghaziabad</option>
+          <option value="jamshedpur">Jamshedpur</option>
+          <option value="jaipur">Jaipur</option>
+          <option value="kochi">Kochi</option>
+          <option value="lucknow">Lucknow</option>
+          <option value="nagpur">Nagpur</option>
+          <option value="patna">Patna</option>
+          <option value="raipur">Raipur</option>
+          <option value="surat">Surat</option>
+          <option value="visakhapatnam">Visakhapatnam</option>
+          <option value="agra">Agra</option>
+          <option value="ajmer">Ajmer</option>
+          <option value="kanpur">Kanpur</option>
+          <option value="mysuru">Mysuru</option>
+          <option value="srinagar">Srinagar</option>
+          <option value="etawah">Etawah</option>
+          <option value="roorkee">Roorkee</option>
+          <option value="rajamundry">Rajamundry</option>
+          <option value="bhatinda">Bhatinda</option>
+          <option value="hajipur">Hajipur</option>
+          <option value="rohtak">Rohtak</option>
+          <option value="hosur">Hosur</option>
+          <option value="gandhinagar">Gandhinagar</option>
+          <option value="junagadh">Junagadh</option>
+          <option value="udaipur">Udaipur</option>
+          <option value="salem">Salem</option>
+          <option value="jhansi">Jhansi</option>
+          <option value="madurai">Madurai</option>
+          <option value="vijayawada">Vijayawada</option>
+          <option value="meerut">Meerut</option>
+          <option value="mathura">Mathura</option>
+          <option value="bikaner">Bikaner</option>
+          <option value="cuttack">Cuttack</option>
+          <option value="nashik">Nashik</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <h4>Experience Filter</h4>
+        <select id="experience-filter">
+          <option value="all">All Experience Levels</option>
+          <option value="0-2">0-2 Years</option>
+          <option value="2-5">2-5 Years</option>
+          <option value="5-10">5-10 Years</option>
+          <option value="10+">10+ Years</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <h4>Notice Period Filter</h4>
+        <select id="notice-period-filter">
+          <option value="all">Any Notice Period</option>
+          <option value="immediate">Immediate</option>
+          <option value="1-month">1 Month</option>
+          <option value="2-months">2 Months</option>
+          <option value="3-months">3 Months</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <h4>Salary Filter</h4>
+        <select id="salary-filter">
+          <option value="all">All Salary Ranges</option>
+          <option value="0-5">0-5 LPA</option>
+          <option value="5-10">5-10 LPA</option>
+          <option value="10-15">10-15 LPA</option>
+          <option value="15+">15+ LPA</option>
+        </select>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="main-container">
+      <!-- Navbar -->
+      <div class="navbar">
+        <h2>SQL developer <button class="open-button" onclick="window.location.href='home2.html';"> back</button></h2>
+        <button class="post-job-button" onclick="window.location.href='postjob.html';"
+        >Post Job</button>
+      </div>
+
+      <!-- Content Section -->
+      <div class="content">
+        <div class="container">
+          <div class="header-actions">
+            <h3 onclick="window.location.href='allresponses.html';" style="cursor: pointer;">
+               All responses
+            </h3>
+            <h3 onclick="window.location.href='Shortlisted1.html';" style="cursor: pointer;">
+              Resume Shortlisted 
+            </h3>
+            <h3 onclick="window.location.href='Shortlisted2.html';" style="cursor: pointer;">
+             <u>Final Shortlisted </u>
+            </h3>
+            <div class="pagination">
+              <label for="entitiesCountSelect">Show:</label>
+              <select id="entitiesCountSelect" onchange="changeRowsPerPage()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+              <span id="showingInfo">Showing 1-5 of 15</span>
+              <button id="prevBtn" onclick="changePage(-1)">Previous</button>
+              <span id="pageInfo">Page 1 of 1</span>
+              <button id="nextBtn" onclick="changePage(1)">Next</button>
+            </div>
+          </div>
+        </div>
+        <div class="container" style="display: flex;">
+          <div class="" > <h3> Final Shortlisted</h3></div>
+          <div class="actions" style="padding-left: 850px;">
+            <i class="material-icons" style="font-size: 36px;cursor: pointer;">refresh</i>
+            <i class="material-icons delete" style="font-size: 36px;cursor: pointer;">delete</i>
+            <button style="cursor: pointer;"> download</button>
+             </div>
+        </div>
+
+        <div class="container">
+          <table>
+            <tbody id="jobTableBody">
+              <tr style="font-size: 14px;">
+                <th style="text-align: left">
+                  <input type="checkbox" id="selectAllCheckbox" onclick="toggleSelectAll()" />
+                  Selection
+                </th><th style="text-align: left" >Name</th>
+
+                <th style="text-align: left">Experience</th>
+                <th style="text-align: left">Current salary</th>
+                <th style="text-align: left">Location</th>
+                <th style="text-align: left">Notice period</th>
+
+                <th style="text-align: center">Gmail</th>
+
+                <th style="text-align: left"> FirstRating</th>
+                <th style="text-align: left">Overall Rating</th>
+
+              </tr>
+             
+              <tr style="font-size: 14px;">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+  <td onclick="openForm2('form2-1')" style="cursor: pointer;">srujan
+    <div class="form-popup2" id="form2-1">
+      <form action="/action_page.php" class="form-container2">
+        <h1 style="text-align: center;">Progress Card</h1>
+        <p>Communication: 100</p>
+        <p>Skills: 100</p>
+        <p>Behaviour: 100</p>
+        <p>Confidence: 100</p>
+        <button
+          type="button"
+          class="btn cancel"
+          onclick="closeForm2('form2-1')"
+        >
+          Close
+        </button>
+      </form>
+    </div>
+  </td>
+                <td>5y-6m</td>
+                <td>7.5 LPA</td>
+                <td>Bengaluru</td>
+                <td>3 months</td>
+
+                <td>srujanodaya@gmail.com</td>
+
+                <td>10</td>
+                <td>10</td>
+                <td>
+                  <button class="open-button" onclick="openForm()">
+                    offer letter
+                  </button>
+
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1 style="text-align: center;">offer letter</h1>
+
+                      <p style="
+                      text-align: left;
+                      margin-left: 9px;
+                      margin-bottom: 6px;">
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true"
+                          >Offer letter at Data
+                          Sturdy</span
+                        >
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          As discussed, I am further scheduling this call at [Insert Time] on [Insert Date[Insert Day]. Kindly confirm your availability.
+                        </p>
+                        <p>Here are the details for the interview:</p>
+                        <p>
+                         <h3> Microsoft Teams</h3>
+                        </p>
+                        <p>
+                          Join the meeting now <br>
+Meeting ID: 483 393 579 378 <br>
+Passcode: EPVksU  </p>
+                        <p>link</p>
+                        
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+  
+              
+
+              <tr style="font-size: 14px;">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td onclick="openForm2('form2-2')" style="cursor: pointer;">alex_smith
+                  <div class="form-popup2" id="form2-2">
+                    <form action="/action_page.php" class="form-container2">
+                      <h1 style="text-align: center;">Progress Card</h1>
+                      <p>Communication: 95</p>
+                      <p>Skills: 90</p>
+                      <p>Behaviour: 85</p>
+                      <p>Confidence: 92</p>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm2('form2-2')"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>4y-8m</td>
+                <td>8.0 LPA</td>
+                <td>Mumbai</td>
+                <td>2 months</td>
+                <td>alex.smith@example.com</td>
+                <td>9</td>
+                <td>8</td>
+                <td>
+                  <button class="open-button" onclick="openForm()">
+                    offer letter
+                  </button>
+              
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1 style="text-align: center;">offer letter</h1>
+              
+                      <p style="
+                      text-align: left;
+                      margin-left: 9px;
+                      margin-bottom: 6px;">
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true">
+                          Offer letter at Data Sturdy
+                        </span>
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          As discussed, I am further scheduling this call at [Insert Time] on [Insert Date[Insert Day]. Kindly confirm your availability.
+                        </p>
+                        <p>Here are the details for the interview:</p>
+                        <p>
+                          <h3> Microsoft Teams</h3>
+                        </p>
+                        <p>
+                          Join the meeting now <br>
+                          Meeting ID: 123 456 789 012 <br>
+                          Passcode: ABCdef 
+                        </p>
+                        <p>link</p>
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              
+              <tr style="font-size: 14px;">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td onclick="openForm2('form2-3')" style="cursor: pointer;">linda_johnson
+                  <div class="form-popup2" id="form2-3">
+                    <form action="/action_page.php" class="form-container2">
+                      <h1 style="text-align: center;">Progress Card</h1>
+                      <p>Communication: 88</p>
+                      <p>Skills: 95</p>
+                      <p>Behaviour: 90</p>
+                      <p>Confidence: 91</p>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm2('form2-3')"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>3y-4m</td>
+                <td>8.5 LPA</td>
+                <td>Hyderabad</td>
+                <td>1 month</td>
+                <td>linda.johnson@example.com</td>
+                <td>8</td>
+                <td>9</td>
+                <td>
+                  <button class="open-button" onclick="openForm()">
+                    offer letter
+                  </button>
+              
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1 style="text-align: center;">offer letter</h1>
+              
+                      <p style="
+                      text-align: left;
+                      margin-left: 9px;
+                      margin-bottom: 6px;">
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true">
+                          Offer letter at Data Sturdy
+                        </span>
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          As discussed, I am further scheduling this call at [Insert Time] on [Insert Date[Insert Day]. Kindly confirm your availability.
+                        </p>
+                        <p>Here are the details for the interview:</p>
+                        <p>
+                          <h3> Microsoft Teams</h3>
+                        </p>
+                        <p>
+                          Join the meeting now <br>
+                          Meeting ID: 789 012 345 678 <br>
+                          Passcode: GHIjkl 
+                        </p>
+                        <p>link</p>
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              <tr style="font-size: 14px;">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td onclick="openForm2('form2-2')" style="cursor: pointer;">alex_smith
+                  <div class="form-popup2" id="form2-2">
+                    <form action="/action_page.php" class="form-container2">
+                      <h1 style="text-align: center;">Progress Card</h1>
+                      <p>Communication: 95</p>
+                      <p>Skills: 90</p>
+                      <p>Behaviour: 85</p>
+                      <p>Confidence: 92</p>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm2('form2-2')"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>4y-8m</td>
+                <td>8.0 LPA</td>
+                <td>Mumbai</td>
+                <td>2 months</td>
+                <td>alex.smith@example.com</td>
+                <td>9</td>
+                <td>8</td>
+                <td>
+                  <button class="open-button" onclick="openForm()">
+                    offer letter
+                  </button>
+              
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1 style="text-align: center;">offer letter</h1>
+              
+                      <p style="
+                      text-align: left;
+                      margin-left: 9px;
+                      margin-bottom: 6px;">
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true">
+                          Offer letter at Data Sturdy
+                        </span>
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          As discussed, I am further scheduling this call at [Insert Time] on [Insert Date[Insert Day]. Kindly confirm your availability.
+                        </p>
+                        <p>Here are the details for the interview:</p>
+                        <p>
+                          <h3> Microsoft Teams</h3>
+                        </p>
+                        <p>
+                          Join the meeting now <br>
+                          Meeting ID: 123 456 789 012 <br>
+                          Passcode: ABCdef 
+                        </p>
+                        <p>link</p>
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              
+              <tr style="font-size: 14px;">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td onclick="openForm2('form2-3')" style="cursor: pointer;">linda_johnson
+                  <div class="form-popup2" id="form2-3">
+                    <form action="/action_page.php" class="form-container2">
+                      <h1 style="text-align: center;">Progress Card</h1>
+                      <p>Communication: 88</p>
+                      <p>Skills: 95</p>
+                      <p>Behaviour: 90</p>
+                      <p>Confidence: 91</p>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm2('form2-3')"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>3y-4m</td>
+                <td>8.5 LPA</td>
+                <td>Hyderabad</td>
+                <td>1 month</td>
+                <td>linda.johnson@example.com</td>
+                <td>8</td>
+                <td>9</td>
+                <td>
+                  <button class="open-button" onclick="openForm()">
+                    offer letter
+                  </button>
+              
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1 style="text-align: center;">offer letter</h1>
+              
+                      <p style="
+                      text-align: left;
+                      margin-left: 9px;
+                      margin-bottom: 6px;">
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true">
+                          Offer letter at Data Sturdy
+                        </span>
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          As discussed, I am further scheduling this call at [Insert Time] on [Insert Date[Insert Day]. Kindly confirm your availability.
+                        </p>
+                        <p>Here are the details for the interview:</p>
+                        <p>
+                          <h3> Microsoft Teams</h3>
+                        </p>
+                        <p>
+                          Join the meeting now <br>
+                          Meeting ID: 789 012 345 678 <br>
+                          Passcode: GHIjkl 
+                        </p>
+                        <p>link</p>
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+                            
+              
+
+              
+              <!-- Add more rows here for testing -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleSelectAll() {
+  const selectAllCheckbox = document.getElementById("selectAllCheckbox");
+  const rowCheckboxes = document.querySelectorAll(".row-checkbox");
+
+  rowCheckboxes.forEach((checkbox) => {
+    checkbox.checked = selectAllCheckbox.checked;
+  });
+}
+
+      function openForm2(formId) {
+  document.getElementById(formId).style.display = "block";
+}
+
+// Close specific form and redirect
+function closeForm2(formId) {
+  document.getElementById(formId).style.display = "none";
+  window.location.href = 'Shortlisted2.html'; // Redirect to desired page
+}
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  window.location.href = 'Shortlisted2.html'; // Redirect to desired page
+}
+let currentPage = 1;
+      let rowsPerPage = 5;
+      const tableBody = document.getElementById("jobTableBody");
+      const rows = tableBody.getElementsByTagName("tr");
+      let totalRows = rows.length;
+      let totalPages = Math.ceil(totalRows / rowsPerPage);
+
+      window.onload = () => {
+        displayPage(currentPage);
+        document
+          .getElementById("location-filter")
+          .addEventListener("change", filterTable);
+        document
+          .getElementById("experience-filter")
+          .addEventListener("change", filterTable);
+        document
+          .getElementById("notice-period-filter")
+          .addEventListener("change", filterTable);
+        document
+          .getElementById("salary-filter")
+          .addEventListener("change", filterTable);
+      };
+
+      document.querySelectorAll(".material-icons").forEach((icon) => {
+        if (icon.textContent === "delete") {
+          icon.addEventListener("click", deleteSelectedRows);
+        }
+      });
+
+      function deleteSelectedRows() {
+        const checkboxes = document.querySelectorAll(".row-checkbox");
+        for (let i = checkboxes.length - 1; i >= 0; i--) {
+          if (checkboxes[i].checked) {
+            tableBody.deleteRow(i);
+          }
+        }
+        totalRows = tableBody.getElementsByTagName("tr").length;
+        totalPages = Math.ceil(totalRows / rowsPerPage);
+        currentPage = 1;
+        displayPage(currentPage);
+      }
+
+      function displayPage(page) {
+        currentPage = page;
+        const startRow = (currentPage - 1) * rowsPerPage;
+        const endRow = startRow + rowsPerPage;
+
+        for (let i = 0; i < totalRows; i++) {
+          rows[i].style.display = i >= startRow && i < endRow ? "" : "none";
+        }
+
+        document.getElementById(
+          "pageInfo"
+        ).innerText = `Page ${currentPage} of ${totalPages}`;
+        document.getElementById("prevBtn").disabled = currentPage === 1;
+        document.getElementById("nextBtn").disabled =
+          currentPage === totalPages;
+        updateShowingInfo(startRow, endRow);
+      }
+
+      function updateShowingInfo(startRow, endRow) {
+        const visibleRows = Array.from(rows).filter(
+          (row) => row.style.display !== "none"
+        ).length;
+        document.getElementById("showingInfo").innerText = `Showing ${Math.min(
+          startRow + 1,
+          visibleRows
+        )}-${Math.min(endRow, visibleRows)} of ${visibleRows}`;
+      }
+
+      function changePage(direction) {
+        const newPage = currentPage + direction;
+        if (newPage >= 1 && newPage <= totalPages) {
+          displayPage(newPage);
+        }
+      }
+
+      function changeRowsPerPage() {
+        const select = document.getElementById("entitiesCountSelect");
+        rowsPerPage = parseInt(select.value, 10);
+        totalPages = Math.ceil(totalRows / rowsPerPage);
+        currentPage = 1;
+        displayPage(currentPage);
+      }
+      function filterTable() {
+        const locationFilter = document
+          .getElementById("location-filter")
+          .value.toLowerCase();
+        const experienceFilter =
+          document.getElementById("experience-filter").value;
+        const noticePeriodFilter = document.getElementById(
+          "notice-period-filter"
+        ).value;
+        const salaryFilter = document.getElementById("salary-filter").value;
+
+        let visibleRowCount = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+          const location = rows[i].cells[4].textContent.toLowerCase(); // Updated index for location
+          const experience = rows[i].cells[2].textContent.toLowerCase(); // Updated index for experience
+          const noticePeriod = rows[i].cells[5].textContent.toLowerCase(); // Updated index for notice period
+          const salary = parseFloat(
+            rows[i].cells[3].textContent.toLowerCase().replace(/[^0-9.]/g, "")
+          ); // Updated index for salary
+
+          const locationMatches =
+            locationFilter === "all" || location.includes(locationFilter);
+          const experienceMatches =
+            experienceFilter === "all" ||
+            checkExperience(experience, experienceFilter);
+          const noticePeriodMatches =
+            noticePeriodFilter === "all" ||
+            noticePeriod.includes(noticePeriodFilter);
+          const salaryMatches =
+            salaryFilter === "all" || checkSalary(salary, salaryFilter);
+
+          if (
+            locationMatches &&
+            experienceMatches &&
+            noticePeriodMatches &&
+            salaryMatches
+          ) {
+            rows[i].style.display = "";
+            visibleRowCount++;
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+
+        totalRows = visibleRowCount;
+        totalPages = Math.ceil(totalRows / rowsPerPage);
+        currentPage = 1;
+        displayPage(currentPage);
+      }
+
+      function checkExperience(experience, filter) {
+        const years = parseFloat(experience.split("y")[0]);
+        switch (filter) {
+          case "0-2":
+            return years >= 0 && years <= 2;
+          case "2-5":
+            return years > 2 && years <= 5;
+          case "5-10":
+            return years > 5 && years <= 10;
+          case "10+":
+            return years > 10;
+          default:
+            return true;
+        }
+      }
+
+      function checkSalary(salary, filter) {
+        switch (filter) {
+          case "0-5":
+            return salary <= 5;
+          case "5-10":
+            return salary > 5 && salary <= 10;
+          case "10-15":
+            return salary > 10 && salary <= 15;
+          case "15+":
+            return salary > 15;
+          default:
+            return true;
+        }
+      }
+    </script>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

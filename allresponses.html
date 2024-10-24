@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Jobs</title>
+    <link rel="stylesheet" href="home2.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Filters</h3>
+      <div class="filter-section">
+        <h4>Location Filter</h4>
+        <select id="location-filter">
+          <option value="all">All Locations</option>
+          <option value="bengaluru">Bengaluru</option>
+          <option value="delhi">Delhi</option>
+          <option value="chennai">Chennai</option>
+          <option value="hyderabad">Hyderabad</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="pune">Pune</option>
+          <option value="kolkata">Kolkata</option>
+          <option value="ahmedabad">Ahmedabad</option>
+          <option value="amritsar">Amritsar</option>
+          <option value="bhopal">Bhopal</option>
+          <option value="bhubaneswar">Bhubaneswar</option>
+          <option value="chandigarh">Chandigarh</option>
+          <option value="faridabad">Faridabad</option>
+          <option value="ghaziabad">Ghaziabad</option>
+          <option value="jamshedpur">Jamshedpur</option>
+          <option value="jaipur">Jaipur</option>
+          <option value="kochi">Kochi</option>
+          <option value="lucknow">Lucknow</option>
+          <option value="nagpur">Nagpur</option>
+          <option value="patna">Patna</option>
+          <option value="raipur">Raipur</option>
+          <option value="surat">Surat</option>
+          <option value="visakhapatnam">Visakhapatnam</option>
+          <option value="agra">Agra</option>
+          <option value="ajmer">Ajmer</option>
+          <option value="kanpur">Kanpur</option>
+          <option value="mysuru">Mysuru</option>
+          <option value="srinagar">Srinagar</option>
+          <option value="etawah">Etawah</option>
+          <option value="roorkee">Roorkee</option>
+          <option value="rajamundry">Rajamundry</option>
+          <option value="bhatinda">Bhatinda</option>
+          <option value="hajipur">Hajipur</option>
+          <option value="rohtak">Rohtak</option>
+          <option value="hosur">Hosur</option>
+          <option value="gandhinagar">Gandhinagar</option>
+          <option value="junagadh">Junagadh</option>
+          <option value="udaipur">Udaipur</option>
+          <option value="salem">Salem</option>
+          <option value="jhansi">Jhansi</option>
+          <option value="madurai">Madurai</option>
+          <option value="vijayawada">Vijayawada</option>
+          <option value="meerut">Meerut</option>
+          <option value="mathura">Mathura</option>
+          <option value="bikaner">Bikaner</option>
+          <option value="cuttack">Cuttack</option>
+          <option value="nashik">Nashik</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <h4>Experience Filter</h4>
+        <select id="experience-filter">
+          <option value="all">All Experience Levels</option>
+          <option value="0-2">0-2 Years</option>
+          <option value="2-5">2-5 Years</option>
+          <option value="5-10">5-10 Years</option>
+          <option value="10+">10+ Years</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <h4>Notice Period Filter</h4>
+        <select id="notice-period-filter">
+          <option value="all">Any Notice Period</option>
+          <option value="immediate">Immediate</option>
+          <option value="1-month">1 Month</option>
+          <option value="2-months">2 Months</option>
+          <option value="3-months">3 Months</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <h4>Salary Filter</h4>
+        <select id="salary-filter">
+          <option value="all">All Salary Ranges</option>
+          <option value="0-5">0-5 LPA</option>
+          <option value="5-10">5-10 LPA</option>
+          <option value="10-15">10-15 LPA</option>
+          <option value="15+">15+ LPA</option>
+        </select>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="main-container">
+      <!-- Navbar -->
+      <div class="navbar">
+        <h2>
+          SQL developer
+          <button
+            class="open-button"
+            onclick="window.location.href='home2.html';"
+          >
+            back
+          </button>
+        </h2>
+        <button
+          class="post-job-button"
+          onclick="window.location.href='postjob.html';"
+        >
+          Post Job
+        </button>
+      </div>
+
+      <!-- Content Section -->
+      <div class="content">
+        <div class="container">
+          <div class="header-actions">
+            <h3
+              onclick="window.location.href='allresponses.html';"
+              style="cursor: pointer"
+            >
+              <u> All responses</u>
+            </h3>
+            <h3
+              onclick="window.location.href='Shortlisted1.html';"
+              style="cursor: pointer"
+            >
+              Resume Shortlisted
+            </h3>
+            <h3
+              onclick="window.location.href='Shortlisted2.html';"
+              style="cursor: pointer"
+            >
+              Final Shortlisted
+            </h3>
+            <div class="pagination">
+              <label for="entitiesCountSelect">Show:</label>
+              <select id="entitiesCountSelect" onchange="changeRowsPerPage()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+              <span id="showingInfo">Showing 1-5 of 15</span>
+              <button id="prevBtn" onclick="changePage(-1)">Previous</button>
+              <span id="pageInfo">Page 1 of 1</span>
+              <button id="nextBtn" onclick="changePage(1)">Next</button>
+            </div>
+          </div>
+        </div>
+        <div class="container" style="display: flex">
+          <div class=""><h3>All responses</h3></div>
+          <div class="actions" style="padding-left: 850px">
+            <i class="material-icons" style="font-size: 36px; cursor: pointer"
+              >refresh</i
+            >
+            <i
+              class="material-icons delete"
+              style="font-size: 36px; cursor: pointer"
+              >delete</i
+            >
+            <button>download</button>
+          </div>
+        </div>
+
+        <div class="container">
+          <table>
+            <tbody id="jobTableBody">
+              <tr style="font-size: 14px">
+                <th style="text-align: left; padding-right: 20px">Selection</th>
+                <th style="text-align: left">Name</th>
+                <th style="text-align: left">Experience</th>
+                <th style="text-align: left">Current salary</th>
+                <th style="text-align: left">Location</th>
+                <th style="text-align: left">Notice period</th>
+                <th style="text-align: left">Current company</th>
+                <th style="text-align: center">Gmail</th>
+                <th style="text-align: left">Contact number</th>
+                <th style="text-align: left">Rating</th>
+              </tr>
+              <tr style="font-size: 14px">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td>srujanodaya</td>
+                <td>5y-6m</td>
+                <td>7.5 LPA</td>
+                <td>Bengaluru</td>
+                <td>3 months</td>
+                <td>DataSturdy</td>
+                <td style="text-align: center">srujanodaya@gmail.com</td>
+                <td>9845772030</td>
+                <td>10</td>
+              </tr>
+
+              <tr style="font-size: 14px">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td>john_doe</td>
+                <td>4y-2m</td>
+                <td>8.0 LPA</td>
+                <td>Mumbai</td>
+                <td>2 months</td>
+                <td>TechCorp</td>
+                <td style="text-align: center">john.doe@example.com</td>
+                <td>9876543210</td>
+                <td>8</td>
+              </tr>
+
+              <tr style="font-size: 14px">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td>jane_smith</td>
+                <td>6y-1m</td>
+                <td>9.5 LPA</td>
+                <td>Pune</td>
+                <td>1 month</td>
+                <td>InnovateInc</td>
+                <td style="text-align: center">jane.smith@example.com</td>
+                <td>9988776655</td>
+                <td>9</td>
+              </tr>
+
+              <tr style="font-size: 14px">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td>alice_jones</td>
+                <td>3y-4m</td>
+                <td>6.0 LPA</td>
+                <td>Hyderabad</td>
+                <td>4 months</td>
+                <td>FutureTech</td>
+                <td style="text-align: center">alice.jones@example.com</td>
+                <td>9991234567</td>
+                <td>7</td>
+              </tr>
+
+              <tr style="font-size: 14px">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td>bob_brown</td>
+                <td>2y-8m</td>
+                <td>5.5 LPA</td>
+                <td>Chennai</td>
+                <td>6 months</td>
+                <td>DataWorld</td>
+                <td style="text-align: center">bob.brown@example.com</td>
+                <td>9156784321</td>
+                <td>6</td>
+              </tr>
+
+              <tr style="font-size: 14px">
+                <td><input type="checkbox" class="row-checkbox" /></td>
+                <td>charlie_black</td>
+                <td>7y-0m</td>
+                <td>10.0 LPA</td>
+                <td>Kolkata</td>
+                <td>1 month</td>
+                <td>GlobalSoft</td>
+                <td style="text-align: center">charlie.black@example.com</td>
+                <td>8445678910</td>
+                <td>10</td>
+              </tr>
+
+              <!-- Add more rows here for testing -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentPage = 1;
+      let rowsPerPage = 5;
+      const tableBody = document.getElementById("jobTableBody");
+      const rows = tableBody.getElementsByTagName("tr");
+      let totalRows = rows.length;
+      let totalPages = Math.ceil(totalRows / rowsPerPage);
+
+      window.onload = () => {
+        displayPage(currentPage);
+        document
+          .getElementById("location-filter")
+          .addEventListener("change", filterTable);
+        document
+          .getElementById("experience-filter")
+          .addEventListener("change", filterTable);
+        document
+          .getElementById("notice-period-filter")
+          .addEventListener("change", filterTable);
+        document
+          .getElementById("salary-filter")
+          .addEventListener("change", filterTable);
+      };
+
+      document.querySelectorAll(".material-icons").forEach((icon) => {
+        if (icon.textContent === "delete") {
+          icon.addEventListener("click", deleteSelectedRows);
+        }
+      });
+
+      function deleteSelectedRows() {
+        const checkboxes = document.querySelectorAll(".row-checkbox");
+        for (let i = checkboxes.length - 1; i >= 0; i--) {
+          if (checkboxes[i].checked) {
+            tableBody.deleteRow(i);
+          }
+        }
+        totalRows = tableBody.getElementsByTagName("tr").length;
+        totalPages = Math.ceil(totalRows / rowsPerPage);
+        currentPage = 1;
+        displayPage(currentPage);
+      }
+
+      function displayPage(page) {
+        currentPage = page;
+        const startRow = (currentPage - 1) * rowsPerPage;
+        const endRow = startRow + rowsPerPage;
+
+        for (let i = 0; i < totalRows; i++) {
+          rows[i].style.display = i >= startRow && i < endRow ? "" : "none";
+        }
+
+        document.getElementById(
+          "pageInfo"
+        ).innerText = `Page ${currentPage} of ${totalPages}`;
+        document.getElementById("prevBtn").disabled = currentPage === 1;
+        document.getElementById("nextBtn").disabled =
+          currentPage === totalPages;
+        updateShowingInfo(startRow, endRow);
+      }
+
+      function updateShowingInfo(startRow, endRow) {
+        const visibleRows = Array.from(rows).filter(
+          (row) => row.style.display !== "none"
+        ).length;
+        document.getElementById("showingInfo").innerText = `Showing ${Math.min(
+          startRow + 1,
+          visibleRows
+        )}-${Math.min(endRow, visibleRows)} of ${visibleRows}`;
+      }
+
+      function changePage(direction) {
+        const newPage = currentPage + direction;
+        if (newPage >= 1 && newPage <= totalPages) {
+          displayPage(newPage);
+        }
+      }
+
+      function changeRowsPerPage() {
+        const select = document.getElementById("entitiesCountSelect");
+        rowsPerPage = parseInt(select.value, 10);
+        totalPages = Math.ceil(totalRows / rowsPerPage);
+        currentPage = 1;
+        displayPage(currentPage);
+      }
+
+      function filterTable() {
+        const locationFilter = document
+          .getElementById("location-filter")
+          .value.toLowerCase();
+        const experienceFilter =
+          document.getElementById("experience-filter").value;
+        const noticePeriodFilter = document.getElementById(
+          "notice-period-filter"
+        ).value;
+        const salaryFilter = document.getElementById("salary-filter").value;
+
+        let visibleRowCount = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+          const location = rows[i].cells[4].textContent.toLowerCase(); // Updated index for location
+          const experience = rows[i].cells[2].textContent.toLowerCase(); // Updated index for experience
+          const noticePeriod = rows[i].cells[5].textContent.toLowerCase(); // Updated index for notice period
+          const salary = parseFloat(
+            rows[i].cells[3].textContent.toLowerCase().replace(/[^0-9.]/g, "")
+          ); // Updated index for salary
+
+          const locationMatches =
+            locationFilter === "all" || location.includes(locationFilter);
+          const experienceMatches =
+            experienceFilter === "all" ||
+            checkExperience(experience, experienceFilter);
+          const noticePeriodMatches =
+            noticePeriodFilter === "all" ||
+            noticePeriod.includes(noticePeriodFilter);
+          const salaryMatches =
+            salaryFilter === "all" || checkSalary(salary, salaryFilter);
+
+          if (
+            locationMatches &&
+            experienceMatches &&
+            noticePeriodMatches &&
+            salaryMatches
+          ) {
+            rows[i].style.display = "";
+            visibleRowCount++;
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+
+        totalRows = visibleRowCount;
+        totalPages = Math.ceil(totalRows / rowsPerPage);
+        currentPage = 1;
+        displayPage(currentPage);
+      }
+
+      function checkExperience(experience, filter) {
+        const years = parseFloat(experience.split("y")[0]);
+        switch (filter) {
+          case "0-2":
+            return years >= 0 && years <= 2;
+          case "2-5":
+            return years > 2 && years <= 5;
+          case "5-10":
+            return years > 5 && years <= 10;
+          case "10+":
+            return years > 10;
+          default:
+            return true;
+        }
+      }
+
+      function checkSalary(salary, filter) {
+        switch (filter) {
+          case "0-5":
+            return salary <= 5;
+          case "5-10":
+            return salary > 5 && salary <= 10;
+          case "10-15":
+            return salary > 10 && salary <= 15;
+          case "15+":
+            return salary > 15;
+          default:
+            return true;
+        }
+      }
+    </script>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

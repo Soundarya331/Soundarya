@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* General styling */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+/* Container styling */
+.container {
+  max-width: 650px;
+  margin: auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Hover effect on the container */
+.container:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Form title */
+h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #002244; /* Dark blue to match "Data Sturdy" branding */
+  margin-bottom: 20px;
+}
+
+/* Job title section */
+.job-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #004488; /* Slightly lighter blue */
+}
+
+/* Label styles */
+label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-top: 10px;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus state for input fields */
+input:focus {
+  border-color: #004488;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 68, 136, 0.2);
+}
+
+/* Submit button */
+button {
+  background-color: #004488; /* Data Sturdy theme color */
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submit button */
+button:hover {
+  background-color: #003366; /* Darker shade for hover */
+}
+
+/* Response message styles */
+#response-message {
+  margin-top: 20px;
+  text-align: center;
+  color: #d9534f; /* Bootstrap danger color */
+  font-size: 16px;
+}
+
+/* Additional enhancements */
+input[type="file"] {
+  padding: 8px;
+  cursor: pointer;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/* Company branding for job details */
+h2 {
+  font-size: 22px;
+  color: #004488; /* Company theme color */
+  margin-bottom: 15px;
+}
+
+/* Styling for displayed job details */
+p {
+  font-size: 16px;
+  color: #555;
+  margin: 8px 0;
+}
+
+p strong {
+  color: #333;
+}

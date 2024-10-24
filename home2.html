@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Jobs</title>
+    <link rel="stylesheet" href="home2.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Filters</h3>
+      <div class="filter-section">
+        <h4>Location Filter</h4>
+        <select id="location-filter">
+          <option value="all">All Locations</option>
+          <option value="bengaluru">Bengaluru</option>
+          <option value="delhi">Delhi</option>
+          <option value="chennai">Chennai</option>
+          <option value="hyderabad">Hyderabad</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="pune">Pune</option>
+          <option value="kolkata">Kolkata</option>
+          <option value="ahmedabad">Ahmedabad</option>
+          <option value="amritsar">Amritsar</option>
+          <option value="bhopal">Bhopal</option>
+          <option value="bhubaneswar">Bhubaneswar</option>
+          <option value="chandigarh">Chandigarh</option>
+          <option value="faridabad">Faridabad</option>
+          <option value="ghaziabad">Ghaziabad</option>
+          <option value="jamshedpur">Jamshedpur</option>
+          <option value="jaipur">Jaipur</option>
+          <option value="kochi">Kochi</option>
+          <option value="lucknow">Lucknow</option>
+          <option value="nagpur">Nagpur</option>
+          <option value="patna">Patna</option>
+          <option value="raipur">Raipur</option>
+          <option value="surat">Surat</option>
+          <option value="visakhapatnam">Visakhapatnam</option>
+          <option value="agra">Agra</option>
+          <option value="ajmer">Ajmer</option>
+          <option value="kanpur">Kanpur</option>
+          <option value="mysuru">Mysuru</option>
+          <option value="srinagar">Srinagar</option>
+          <option value="etawah">Etawah</option>
+          <option value="roorkee">Roorkee</option>
+          <option value="rajamundry">Rajamundry</option>
+          <option value="bhatinda">Bhatinda</option>
+          <option value="hajipur">Hajipur</option>
+          <option value="rohtak">Rohtak</option>
+          <option value="hosur">Hosur</option>
+          <option value="gandhinagar">Gandhinagar</option>
+          <option value="junagadh">Junagadh</option>
+          <option value="udaipur">Udaipur</option>
+          <option value="salem">Salem</option>
+          <option value="jhansi">Jhansi</option>
+          <option value="madurai">Madurai</option>
+          <option value="vijayawada">Vijayawada</option>
+          <option value="meerut">Meerut</option>
+          <option value="mathura">Mathura</option>
+          <option value="bikaner">Bikaner</option>
+          <option value="cuttack">Cuttack</option>
+          <option value="nashik">Nashik</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <h4>Job Filter</h4>
+        <select id="job-filter">
+          <option value="all">All</option>
+          <option value="IT Infra & cloud">IT Infra & cloud</option>
+          <option value="Software Engineering">Software Engineering</option>
+          <option value="Consulting">Consulting</option>
+          <option value="Enterprise Operations">Enterprise Operations</option>
+          <option value="Project and Product Management">
+            Project and Product Management
+          </option>
+          <option value="Sales">Sales</option>
+          <option value="Data & Analytics">Data & Analytics</option>
+          <option value="Design & UX">Design & UX</option>
+          <option value="Research">Research</option>
+          <option value="Security">Security</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+      <!-- Navbar -->
+      <div class="navbar">
+        <h2>Manage Jobs</h2>
+        <button
+          class="post-job-button"
+          onclick="window.location.href='postjob.html';"
+        >
+          Post Job
+        </button>
+      </div>
+
+      <!-- Content Section -->
+      <div class="content">
+        <div class="container">
+          <div class="header-actions">
+            <h3>Active Jobs</h3>
+            <div class="pagination">
+              <label for="entitiesCountSelect">Show:</label>
+              <select id="entitiesCountSelect" onchange="changeRowsPerPage()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+              <span id="showingInfo">Showing 1-5 of 15</span>
+              <button id="prevBtn" onclick="changePage(-1)">Previous</button>
+              <span id="pageInfo">Page 1 of 1</span>
+              <button id="nextBtn" onclick="changePage(1)">Next</button>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="actions">
+            <i class="material-icons" style="font-size: 36px">refresh</i>
+            <i class="material-icons" style="font-size: 36px">delete</i>
+            <button class="action-button" onclick="generateUrl()">
+              URL Generation
+            </button>
+          </div>
+        </div>
+
+        <div class="container">
+          <table>
+            <tbody id="jobTableBody">
+              <tr>
+                <th style="text-align: left">Selection</th>
+                <th style="text-align: left">Job title</th>
+                <th style="text-align: left">Location</th>
+                <th style="text-align: left">Role type</th>
+                <th style="text-align: left">Applied</th>
+                <th style="text-align: left">Eligible</th>
+                <th style="text-align: left">Edit</th>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" name="jobSelect" value="DevOps5" />
+                </td>
+                <td>
+                  <div
+                    class=""
+                    onclick="window.location.href='allresponses.html';"
+                    style="cursor: pointer"
+                  >
+                    Sql developer <br />
+                  </div>
+                </td>
+                <td>delhi</td>
+                <td>Data & Analytics</td>
+                <td>120 <br />total</td>
+                <td>
+                  12 <br /><button class="open-button" onclick="openForm()">
+                    Eligibles link
+                  </button>
+
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1>Mail sending</h1>
+
+                      <p
+                        style="
+                          text-align: left;
+                          margin-left: 9px;
+                          margin-bottom: 6px;
+                        "
+                      >
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true"
+                          >Thank You for Applying at Datasturdy Consulting Pvt.
+                          Ltd. – Job Description Attached</span
+                        >
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          Thank you for your interest in joining Datasturdy
+                          Consulting Pvt. Ltd. We have received your application
+                          for the [Job role] position and appreciate the time
+                          and effort you have put into it.
+                        </p>
+                        <p>
+                          As the next step, we have attached the detailed Job
+                          Description (JD) for your reference. Please review it
+                          carefully to understand the key responsibilities,
+                          expectations, and qualifications required for the
+                          role.
+                        </p>
+                        <p>
+                          We would appreciate it if you could let us know your
+                          available timings for a potential interview. We aim to
+                          schedule interviews at a time that is convenient for
+                          you.
+                        </p>
+                      </blockquote>
+
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>
+                  <i class="material-icons">edit</i>
+                  <br />
+                  11/12/2024
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <input type="checkbox" name="jobSelect" value="DevOps1" />
+                </td>
+                <td>
+                  <div
+                    onclick="window.location.href='allresponses.html';"
+                    style="cursor: pointer"
+                  >
+                    IT Infra & Cloud <br />
+                  </div>
+                </td>
+                <td>Hyderabad</td>
+                <td>IT Infra & Cloud</td>
+                <td>150 <br />total</td>
+                <td>
+                  20 <br /><button class="open-button" onclick="openForm()">
+                    Eligibles link
+                  </button>
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1>Mail sending</h1>
+                      <p
+                        style="
+                          text-align: left;
+                          margin-left: 9px;
+                          margin-bottom: 6px;
+                        "
+                      >
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true"
+                          >Thank You for Applying at Datasturdy Consulting Pvt.
+                          Ltd. – Job Description Attached</span
+                        >
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          Thank you for your interest in joining Datasturdy
+                          Consulting Pvt. Ltd. We have received your application
+                          for the [Job role] position and appreciate the time
+                          and effort you have put into it.
+                        </p>
+                        <p>
+                          As the next step, we have attached the detailed Job
+                          Description (JD) for your reference. Please review it
+                          carefully to understand the key responsibilities,
+                          expectations, and qualifications required for the
+                          role.
+                        </p>
+                        <p>
+                          We would appreciate it if you could let us know your
+                          available timings for a potential interview. We aim to
+                          schedule interviews at a time that is convenient for
+                          you.
+                        </p>
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>
+                  <i class="material-icons">edit</i>
+                  <br />
+                  11/15/2024
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <input type="checkbox" name="jobSelect" value="DevOps2" />
+                </td>
+                <td>
+                  <div
+                    onclick="window.location.href='allresponses.html';"
+                    style="cursor: pointer"
+                  >
+                    Software Engineering <br />
+                  </div>
+                </td>
+                <td>Bengaluru</td>
+                <td>Software Engineering</td>
+                <td>200 <br />total</td>
+                <td>
+                  30 <br /><button class="open-button" onclick="openForm()">
+                    Eligibles link
+                  </button>
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1>Mail sending</h1>
+                      <p
+                        style="
+                          text-align: left;
+                          margin-left: 9px;
+                          margin-bottom: 6px;
+                        "
+                      >
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true"
+                          >Thank You for Applying at Datasturdy Consulting Pvt.
+                          Ltd. – Job Description Attached</span
+                        >
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          Thank you for your interest in joining Datasturdy
+                          Consulting Pvt. Ltd. We have received your application
+                          for the [Job role] position and appreciate the time
+                          and effort you have put into it.
+                        </p>
+                        <p>
+                          As the next step, we have attached the detailed Job
+                          Description (JD) for your reference. Please review it
+                          carefully to understand the key responsibilities,
+                          expectations, and qualifications required for the
+                          role.
+                        </p>
+                        <p>
+                          We would appreciate it if you could let us know your
+                          available timings for a potential interview. We aim to
+                          schedule interviews at a time that is convenient for
+                          you.
+                        </p>
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>
+                  <i class="material-icons">edit</i>
+                  <br />
+                  11/20/2024
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <input type="checkbox" name="jobSelect" value="DevOps3" />
+                </td>
+                <td>
+                  <div
+                    onclick="window.location.href='allresponses.html';"
+                    style="cursor: pointer"
+                  >
+                    Consulting <br />
+                  </div>
+                </td>
+                <td>Mumbai</td>
+                <td>Consulting</td>
+                <td>180 <br />total</td>
+                <td>
+                  25 <br /><button class="open-button" onclick="openForm()">
+                    Eligibles link
+                  </button>
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1>Mail sending</h1>
+                      <p
+                        style="
+                          text-align: left;
+                          margin-left: 9px;
+                          margin-bottom: 6px;
+                        "
+                      >
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true"
+                          >Thank You for Applying at Datasturdy Consulting Pvt.
+                          Ltd. – Job Description Attached</span
+                        >
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          Thank you for your interest in joining Datasturdy
+                          Consulting Pvt. Ltd. We have received your application
+                          for the [Job role] position and appreciate the time
+                          and effort you have put into it.
+                        </p>
+                        <p>
+                          As the next step, we have attached the detailed Job
+                          Description (JD) for your reference. Please review it
+                          carefully to understand the key responsibilities,
+                          expectations, and qualifications required for the
+                          role.
+                        </p>
+                        <p>
+                          We would appreciate it if you could let us know your
+                          available timings for a potential interview. We aim to
+                          schedule interviews at a time that is convenient for
+                          you.
+                        </p>
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>
+                  <i class="material-icons">edit</i>
+                  <br />
+                  11/25/2024
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <input type="checkbox" name="jobSelect" value="DevOps4" />
+                </td>
+                <td>
+                  <div
+                    onclick="window.location.href='allresponses.html';"
+                    style="cursor: pointer"
+                  >
+                    Enterprise Operations <br />
+                  </div>
+                </td>
+                <td>Pune</td>
+                <td>Enterprise Operations</td>
+                <td>90 <br />total</td>
+                <td>
+                  15 <br /><button class="open-button" onclick="openForm()">
+                    Eligibles link
+                  </button>
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1>Mail sending</h1>
+                      <p
+                        style="
+                          text-align: left;
+                          margin-left: 9px;
+                          margin-bottom: 6px;
+                        "
+                      >
+                        <span class="subject">Subject:</span>
+                        <span class="subject-block" contenteditable="true"
+                          >Thank You for Applying at Datasturdy Consulting Pvt.
+                          Ltd. – Job Description Attached</span
+                        >
+                      </p>
+                      <blockquote contenteditable="true">
+                        <p>Dear [Candidate's Name],</p>
+                        <p>
+                          Thank you for your interest in joining Datasturdy
+                          Consulting Pvt. Ltd. We have received your application
+                          for the [Job role] position and appreciate the time
+                          and effort you have put into it.
+                        </p>
+                        <p>
+                          As the next step, we have attached the detailed Job
+                          Description (JD) for your reference. Please review it
+                          carefully to understand the key responsibilities,
+                          expectations, and qualifications required for the
+                          role.
+                        </p>
+                        <p>
+                          We would appreciate it if you could let us know your
+                          available timings for a potential interview. We aim to
+                          schedule interviews at a time that is convenient for
+                          you.
+                        </p>
+                      </blockquote>
+                      <button type="submit" class="btn">submit</button>
+                      <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="closeForm()"
+                      >
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </td>
+                <td>
+                  <i class="material-icons">edit</i>
+                  <br />
+                  12/01/2024
+                </td>
+              </tr>
+
+              <!-- Add more rows here for testing -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      function openForm() {
+        document.getElementById("myForm").style.display = "block";
+      }
+
+      function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+      }
+
+      function generateUrl() {
+        let selectedJobs = document.querySelectorAll(
+          'input[name="jobSelect"]:checked'
+        );
+        if (selectedJobs.length > 0) {
+          let selectedJobTitles = Array.from(selectedJobs).map(
+            (job) => job.value
+          );
+          let generatedUrl =
+            "https://example.com/jobs?titles=" + selectedJobTitles.join(",");
+          alert("Generated URL: " + generatedUrl);
+        } else {
+          alert("Please select at least one job.");
+        }
+      }
+      let currentPage = 1;
+      let rowsPerPage = 5;
+      const tableBody = document.getElementById("jobTableBody");
+      const rows = tableBody.getElementsByTagName("tr");
+      let totalRows = rows.length;
+      let totalPages = Math.ceil(totalRows / rowsPerPage);
+
+      window.onload = () => {
+        displayPage(currentPage);
+        document
+          .getElementById("location-filter")
+          .addEventListener("change", filterTable);
+        document
+          .getElementById("job-filter")
+          .addEventListener("change", filterTable);
+      };
+
+      function displayPage(page) {
+        currentPage = page;
+        const startRow = (currentPage - 1) * rowsPerPage;
+        const endRow = startRow + rowsPerPage;
+
+        for (let i = 0; i < totalRows; i++) {
+          rows[i].style.display = i >= startRow && i < endRow ? "" : "none";
+        }
+
+        document.getElementById(
+          "pageInfo"
+        ).innerText = `Page ${currentPage} of ${totalPages}`;
+        document.getElementById("prevBtn").disabled = currentPage === 1;
+        document.getElementById("nextBtn").disabled =
+          currentPage === totalPages;
+        updateShowingInfo(startRow, endRow);
+      }
+
+      function updateShowingInfo(startRow, endRow) {
+        const visibleRows = Array.from(rows).filter(
+          (row) => row.style.display !== "none"
+        ).length;
+        document.getElementById("showingInfo").innerText = `Showing ${Math.min(
+          startRow + 1,
+          visibleRows
+        )}-${Math.min(endRow, visibleRows)} of ${visibleRows}`;
+      }
+
+      function changePage(direction) {
+        const newPage = currentPage + direction;
+        if (newPage >= 1 && newPage <= totalPages) {
+          displayPage(newPage);
+        }
+      }
+
+      function changeRowsPerPage() {
+        const select = document.getElementById("entitiesCountSelect");
+        rowsPerPage = parseInt(select.value, 10);
+        totalPages = Math.ceil(totalRows / rowsPerPage);
+        currentPage = 1;
+        displayPage(currentPage);
+      }
+      function filterTable() {
+        const locationFilter = document
+          .getElementById("location-filter")
+          .value.toLowerCase();
+        const jobFilter = document
+          .getElementById("job-filter")
+          .value.toLowerCase();
+
+        let visibleRowCount = 0;
+
+        // Start from index 1 to skip the header row
+        for (let i = 1; i < rows.length; i++) {
+          const location = rows[i].cells[2].textContent.toLowerCase(); // Location is in the third cell
+          const jobType = rows[i].cells[3].textContent.toLowerCase(); // Job type is in the fourth cell
+
+          const locationMatches =
+            locationFilter === "all" || location.includes(locationFilter);
+          const jobMatches = jobFilter === "all" || jobType.includes(jobFilter);
+
+          if (locationMatches && jobMatches) {
+            rows[i].style.display = ""; // Show row if it matches both filters
+            visibleRowCount++;
+          } else {
+            rows[i].style.display = "none"; // Hide row if it doesn't match
+          }
+        }
+
+        totalRows = visibleRowCount; // Update totalRows based on visible rows
+        totalPages = Math.ceil(totalRows / rowsPerPage); // Update totalPages based on visible rows
+        currentPage = 1; // Reset to first page after filtering
+        displayPage(currentPage); // Display the updated page
+      }
+    </script>
+  </body>
+</html>
